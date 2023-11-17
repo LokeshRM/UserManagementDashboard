@@ -8,7 +8,7 @@ function CreatePage() {
         e.preventDefault();
         usernameRef.current.value = "";
         passwordRef.current.value = "";
-        alert("Created User");
+        alert("Created Account");
     };
 
     return (

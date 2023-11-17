@@ -3,12 +3,13 @@ import TableFooter from "./TableFooter";
 import Helper from "./helper";
 import Modal from "./Modal";
 
-function TableItem({ query, data, columns }) {
+function TableItem({ query, data, columns, col }) {
     const [page, setPage] = useState(1);
     const [userData, setUserData] = useState(null);
     const [showModal, setShowModal] = useState(false);
+
     const { slice, range } = Helper(
-        data.filter((e) => e.Username.toLowerCase().includes(query)),
+        data.filter((e) => e[col].toLowerCase().includes(query)),
         query,
         page,
         6

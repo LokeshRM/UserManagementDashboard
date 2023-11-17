@@ -39,7 +39,7 @@ function Sidebar({ show, setter }) {
                     User Management <br /> DashBoard
                 </h1>
                 <MenuItem name="User Details" route="/" />
-                <MenuItem name="Add User" route="/create" />
+                <MenuItem name="Account Creation" route="/create" />
             </div>
             {show ? <Overlay setter={setter} /> : <></>}
         </>

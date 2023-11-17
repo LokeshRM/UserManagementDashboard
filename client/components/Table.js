@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import TableItem from "./TableItem";
 
 function Table({ columns, data }) {
     const [query, setQuery] = useState("");
+    const [val, setVal] = useState(0);
+    const elementRef = useRef();
 
     return (
         <>
             <div className="mt-14 pt-2 max-w-[85%] overflow-x-auto shadow-md sm:rounded-lg">
-                <div className="ml-4 mb-2 bg-white dark:bg-gray-900">
+                <div className="ml-4 mb-2 bg-white dark:bg-gray-900 flex justify-between">
                     <div className="relative mt-1">
                         <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
                             <svg
@@ -34,9 +36,32 @@ function Table({ columns, data }) {
                             placeholder="Search for Users"
                         />
                     </div>
+
+                    <div className="flex items-center">
+                        <label
+                            for="filter"
+                            className="text-sm font-medium mr-2 text-gray-900 dark:text-white"
+                        >
+                            Filter By
+                        </label>
+                        <select
+                            onChange={(e) => setVal(e.target.value)}
+                            id="filter"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        >
+                            {columns.map((col, i) => (
+                                <option value={i}>{col}</option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
 
-                <TableItem data={data} columns={columns} query={query} />
+                <TableItem
+                    data={data}
+                    columns={columns}
+                    query={query}
+                    col={columns[val]}
+                />
             </div>
         </>
     );

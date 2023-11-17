@@ -1,7 +1,7 @@
 import Table from "@/components/Table";
 import { useEffect, useState } from "react";
 
-const columns = ["User Name", "Email", "Phone", "ID", "Creation Date"];
+const columns = ["Username", "Email", "Phone", "ID", "CreationDate"];
 
 export default function Home() {
     const [data, setData] = useState(null);
