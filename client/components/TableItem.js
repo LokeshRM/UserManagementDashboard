@@ -9,7 +9,7 @@ function TableItem({ query, data, columns, col }) {
     const [showModal, setShowModal] = useState(false);
 
     const { slice, range } = Helper(
-        data.filter((e) => e[col].toLowerCase().includes(query)),
+        data.filter((e) => e[col].toLowerCase().includes(query.toLowerCase())),
         query,
         page,
         6
